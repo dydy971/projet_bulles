@@ -8,7 +8,7 @@ public class Score {
 	private int nombre_clic;
 	private int nombre_bulle;
 	private static File fichier = new File("D:\\utilisateurs.txt");
-
+//TEST
 	public Score() {
 		this.nombre_clic = 0;
 		this.nombre_bulle = 0;
