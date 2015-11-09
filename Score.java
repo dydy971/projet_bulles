@@ -1,5 +1,3 @@
-# projet_bulles
-
 package projet_bulles;
 
 import java.io.File;
@@ -14,41 +12,9 @@ public class Score {
 		this.nombre_bulle = 0;
 	}
 
-	public void recupScore(StringBuilder ligne) {
+	void recupScore(StringBuilder ligne) {
 		ligne.delete(0, 1);
 		int i = 0;
-		StringBuilder nombre_clic = new StringBuilder();
-		StringBuilder nombre_bulle = new StringBuilder();
-		while (ligne.charAt(i) != '-') {
-			nombre_clic.append(ligne.charAt(i));
-			i++;
-		}
-		i++;
-		while (ligne.charAt(i) != '|') {
-			nombre_bulle.append(ligne.charAt(i));
-			i++;
-		}
-		this.nombre_clic = Integer.parseInt(nombre_clic.toString());
-		this.nombre_bulle = Integer.parseInt(nombre_bulle.toString());
-		ligne.delete(0, i);
-	}
-
-	public void modifierScore(StringBuilder ligne, int p_pallier) {
-		int i = 0;
-		int v_pallier = 0;
-		while (ligne.charAt(i) != '|') {
-			i++;
-		}
-		i++;
-		ligne.delete(0, i);
-		i = 0;
-		while (v_pallier < p_pallier) {
-			if (ligne.charAt(i) == '|') {
-				v_pallier++;
-			} else {
-				i++;
-			}
-		}
 		StringBuilder nombre_clic = new StringBuilder();
 		StringBuilder nombre_bulle = new StringBuilder();
 		while (ligne.charAt(i) != '-') {
