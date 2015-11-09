@@ -1,5 +1,3 @@
-# projet_bulles
-
 package projet_bulles;
 
 import java.io.BufferedReader;
@@ -9,14 +7,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import utilitaire.structure.Repertoire;
+
 public class Utilisateur {
 	private String identifiant;
-	private static File fichier = new File(
-			"/home/ann2/daviaudl/Bureau/utilisateurs.txt");
+	private static File fichier = new File("D:/utilisateurs.txt");
 	private Score[] scores;
 
 	public Utilisateur(String p_identifiant) {
-		this.identifiant = p_identifiant;
+		this.identifiant = p_identifiant.toLowerCase();
 		this.scores = new Score[10];
 		for (int i = 0; i < this.scores.length; i++) {
 			this.scores[i] = new Score();
@@ -88,7 +87,7 @@ public class Utilisateur {
 		fw.close();
 	}
 
-	private void Identification() throws IOException {
+	public void Identification() throws IOException {
 		if (this.UtilisateurExistant()) {
 			StringBuilder informations = this.recupLigne();
 			this.recupIdentifiant(informations.toString());
@@ -161,14 +160,30 @@ public class Utilisateur {
 		return utilisateur.toString();
 	}
 
+	private static void generer_utilisateur(int nombre) {
+		int i = 0;
+		while (i < nombre) {
+			System.out.println("|" + (int) Math.floor(Math.random() * 15)
+					+ "-3|" + (int) Math.floor(Math.random() * 15) + "-4|"
+					+ (int) Math.floor(Math.random() * 15) + "-5|"
+					+ (int) Math.floor(Math.random() * 15) + "-6|"
+					+ (int) Math.floor(Math.random() * 15) + "-7|" + "-3|"
+					+ (int) Math.floor(Math.random() * 15) + "-4|"
+					+ (int) Math.floor(Math.random() * 15) + "-5|"
+					+ (int) Math.floor(Math.random() * 15) + "-6|"
+					+ (int) Math.floor(Math.random() * 15) + "-7|");
+			i++;
+		}
+	}
+
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u1 = new Utilisateur("Alain");
 		Utilisateur u2 = new Utilisateur("Robin");
 		Utilisateur u3 = new Utilisateur("Remi");
 		Utilisateur u4 = new Utilisateur("Meddy");
 		Utilisateur u5 = new Utilisateur("Meddy");
-		u1.Identification();
-		u2.Identification();
+		// u1.Identification();
 		// System.out.println(u1.toString());
+		generer_utilisateur(25);
 	}
 }
