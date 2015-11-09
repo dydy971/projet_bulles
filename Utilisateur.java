@@ -7,12 +7,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import utilitaire.structure.Repertoire;
-
 public class Utilisateur {
 	private String identifiant;
-	private static File fichier = new File("D:/utilisateurs.txt");
+	private static File fichier = new File(
+			"/home/ann2/daviaudl/Bureau/utilisateurs.txt");
 	private Score[] scores;
+	private static String[] utilisateurs;
 
 	public Utilisateur(String p_identifiant) {
 		this.identifiant = p_identifiant.toLowerCase();
@@ -61,6 +61,22 @@ public class Utilisateur {
 			i++;
 		}
 		return identifiant;
+	}
+
+	private void recupIdentifiants(String ligne) throws IOException {
+		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
+		StringBuilder identifiant = new StringBuilder();
+		int compteur = 0;
+		while ((ligne = lecteur.readLine()) != null) {
+			compteur++;
+		}
+		this.utilisateurs = new String[compteur];
+		identifiant = new StringBuilder();
+		compteur = 0;
+		while ((ligne = lecteur.readLine()) != null) {
+			this.utilisateurs[compteur] = ligne;
+			compteur++;
+		}
 	}
 
 	private void recupScores(StringBuilder ligne) {
@@ -176,14 +192,32 @@ public class Utilisateur {
 		}
 	}
 
+	public static void reinitialisation() {
+		fichier.delete();
+		try {
+			FileWriter fw = new FileWriter(fichier, true);
+			fichier.createNewFile();
+			fw.write("ROOT|3-3|4-4|5-5|6-6|7-7|3-3|4-4|5-5|6-6|7-7|");
+			fw.write(System.getProperty("line.separator"));
+			fw.close();
+		} catch (IOException e) {
+		}
+	}
+
+	public void aff(){
+		for(String str : utilisateurs)
+	}
+
 	public static void main(String[] Args) throws IOException {
 		Utilisateur u1 = new Utilisateur("Alain");
 		Utilisateur u2 = new Utilisateur("Robin");
 		Utilisateur u3 = new Utilisateur("Remi");
 		Utilisateur u4 = new Utilisateur("Meddy");
 		Utilisateur u5 = new Utilisateur("Meddy");
-		// u1.Identification();
+		Utilisateur u6 = new Utilisateur("Harkame");
+		// u6.Identification();
+		// reinitialisation();
 		// System.out.println(u1.toString());
-		generer_utilisateur(25);
+		// generer_utilisateur(25);
 	}
 }
