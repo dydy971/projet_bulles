@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public class Utilisateur {
 	private String identifiant;
-	private static File fichier = new File(
-			"/home/ann2/daviaudl/Bureau/utilisateurs.txt");
+	private static File fichier = new File("D:\\utilisateurs.txt");
 	private Score[] scores;
 	private static String[] utilisateurs;
 
@@ -53,7 +52,7 @@ public class Utilisateur {
 		return null;
 	}
 
-	private StringBuilder recupIdentifiant(String ligne) {
+	private static StringBuilder recupIdentifiant(String ligne) {
 		StringBuilder identifiant = new StringBuilder();
 		int i = 0;
 		while (ligne.charAt(i) != '|') {
@@ -63,18 +62,19 @@ public class Utilisateur {
 		return identifiant;
 	}
 
-	private void recupIdentifiants(String ligne) throws IOException {
+	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
 		StringBuilder identifiant = new StringBuilder();
 		int compteur = 0;
+		String ligne;
 		while ((ligne = lecteur.readLine()) != null) {
 			compteur++;
 		}
-		this.utilisateurs = new String[compteur];
-		identifiant = new StringBuilder();
+		utilisateurs = new String[compteur];
 		compteur = 0;
+		lecteur = new BufferedReader(new FileReader(fichier));
 		while ((ligne = lecteur.readLine()) != null) {
-			this.utilisateurs[compteur] = ligne;
+			utilisateurs[compteur] = recupIdentifiant(ligne).toString();
 			compteur++;
 		}
 	}
@@ -204,8 +204,14 @@ public class Utilisateur {
 		}
 	}
 
-	public void aff(){
-		for(String str : utilisateurs)
+	public static void aff() {
+		for (String str : utilisateurs) {
+			System.out.println(str + ", ");
+		}
+	}
+
+	public static String[] getutilisateurs() {
+		return utilisateurs;
 	}
 
 	public static void main(String[] Args) throws IOException {
@@ -215,6 +221,8 @@ public class Utilisateur {
 		Utilisateur u4 = new Utilisateur("Meddy");
 		Utilisateur u5 = new Utilisateur("Meddy");
 		Utilisateur u6 = new Utilisateur("Harkame");
+		recupIdentifiants();
+		aff();
 		// u6.Identification();
 		// reinitialisation();
 		// System.out.println(u1.toString());
