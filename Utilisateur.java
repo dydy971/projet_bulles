@@ -62,7 +62,7 @@ public class Utilisateur {
 		return identifiant;
 	}
 
-	static void recupIdentifiants() throws IOException {
+	public static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
 		StringBuilder identifiant = new StringBuilder();
 		int compteur = 0;
