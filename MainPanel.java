@@ -1,8 +1,5 @@
 package projet_bulles;
 
-//-*- mode:java; encoding:utf-8 -*-
-// vim:set fileencoding=utf-8:
-//http://ateraimemo.com/Swing/ComboBoxSuggestion.html
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
