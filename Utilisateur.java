@@ -62,7 +62,7 @@ public class Utilisateur {
 		return identifiant;
 	}
 
-	public static void recupIdentifiants() throws IOException {
+	static void recupIdentifiants() throws IOException {
 		BufferedReader lecteur = new BufferedReader(new FileReader(fichier));
 		StringBuilder identifiant = new StringBuilder();
 		int compteur = 0;
@@ -109,7 +109,12 @@ public class Utilisateur {
 			this.recupIdentifiant(informations.toString());
 			this.recupScores(informations);
 		} else {
-			this.sauvegarderUtilisateur();
+			Confirmation c1 = new Confirmation(this.identifiant);
+			if (c1.getreponse() == 0) {
+				this.sauvegarderUtilisateur();
+			} else {
+
+			}
 		}
 	}
 
@@ -174,22 +179,6 @@ public class Utilisateur {
 			}
 		}
 		return utilisateur.toString();
-	}
-
-	private static void generer_utilisateur(int nombre) {
-		int i = 0;
-		while (i < nombre) {
-			System.out.println("|" + (int) Math.floor(Math.random() * 15)
-					+ "-3|" + (int) Math.floor(Math.random() * 15) + "-4|"
-					+ (int) Math.floor(Math.random() * 15) + "-5|"
-					+ (int) Math.floor(Math.random() * 15) + "-6|"
-					+ (int) Math.floor(Math.random() * 15) + "-7|" + "-3|"
-					+ (int) Math.floor(Math.random() * 15) + "-4|"
-					+ (int) Math.floor(Math.random() * 15) + "-5|"
-					+ (int) Math.floor(Math.random() * 15) + "-6|"
-					+ (int) Math.floor(Math.random() * 15) + "-7|");
-			i++;
-		}
 	}
 
 	public static void reinitialisation() {
