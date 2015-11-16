@@ -21,13 +21,12 @@ public final class MainPanel extends JPanel {
 		JComboBox<String> combo = makeComboBox(array);
 		combo.setEditable(true);
 		combo.setSelectedIndex(-1);
-		JTextField field = (JTextField) combo.getEditor().getEditorComponent();
-		field.setText("");
-		field.addKeyListener(new ComboKeyHandler(combo));
+		// JTextField field = (JTextField)
+		// combo.getEditor().getEditorComponent();
+		// field.setText("");
+		// field.addKeyListener(new ComboKeyHandler(combo));
 
 		JPanel p = new JPanel(new BorderLayout());
-		p.setBorder(BorderFactory
-				.createTitledBorder("Auto-Completion ComboBox"));
 		p.add(combo, BorderLayout.NORTH);
 
 		Box box = Box.createVerticalBox();
@@ -38,17 +37,12 @@ public final class MainPanel extends JPanel {
 		setPreferredSize(new Dimension(320, 240));
 	}
 
-	private static JComboBox<String> makeComboBox(String... model) {
+	static JComboBox<String> makeComboBox(String... model) {
 		return new JComboBox<String>(model);
 	}
 
 	public static void main(String... args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				createAndShowGUI();
-			}
-		});
+		createAndShowGUI();
 	}
 
 	public static void createAndShowGUI() {
