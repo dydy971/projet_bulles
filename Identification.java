@@ -43,7 +43,7 @@ public class Identification extends JFrame {
 		combo.setEditable(true);
 		combo.setSelectedIndex(-1);
 		JPanel p = new JPanel(new BorderLayout());
-		p.add(combo, BorderLayout.NORTH);
+		p.add(combo, BorderLayout.CENTER);
 		this.add(p);
 		this.champ_saisie = (JTextField) combo.getEditor().getEditorComponent();
 		this.champ_saisie.setText("");
